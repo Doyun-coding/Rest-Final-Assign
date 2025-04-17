@@ -1,4 +1,4 @@
-package com.nhnacademy.restfinalassign.common.converter;
+package com.nhnacademy.restfinalassign.common.converter.csv;
 
 import com.nhnacademy.restfinalassign.model.request.MemberRequest;
 import com.nhnacademy.restfinalassign.model.type.Role;

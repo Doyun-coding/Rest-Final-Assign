@@ -26,9 +26,9 @@ private Role role;
 
 ## 요청 공통 설정
 1. [ ] 멤버 조회(GET)는 xml 형식으로 받을 수 있도록 합니다.
-2. [ ] HandlerMethodArgumentResolver를 이용해 Pageable에 기본값을 수정합니다.
-    2-1. [ ] 기본 페이징 size 5
-    2-2. [ ] MAX 페이징 10
+2. [o] HandlerMethodArgumentResolver를 이용해 Pageable에 기본값을 수정합니다.
+    2-1. [o] 기본 페이징 size 5
+    2-2. [o] MAX 페이징 10
 
 ## 인가
 1. [ ] ADMIN만 접속가능한 페이지
@@ -46,7 +46,7 @@ private Role role;
     3-2. [ ] 차단되었다고 메신저로 알림을 보냅니다.
 4. [ ] 로그아웃 핸들러에서 쿠키 세션과, 레디스 세션을 제거합니다.
 
-OAUTH
+## OAUTH
 1. [ ] 구글 로그인을 추가로 지원합니다.
 2. [ ] 구글 로그인 성공시 기존 세션을 무효화합니다.
     2-1. [ ] 이미 아이디/패스워드로 로그인 사람은 로그인이 안되는 현상 제거.
