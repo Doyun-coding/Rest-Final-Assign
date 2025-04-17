@@ -9,13 +9,13 @@
 2. [o] 멤버 조회
     2-1. [o] 단건 조회 API
     2-2. [o] 전체 조회 API
-    2-3. [ ] role은 소문자로 응답합니다 (enum을 이용)
+    2-3. [o] role은 소문자로 응답합니다 (enum을 이용)
 
-3. [ ] 멤버 단건을 조회하는 API
-    3-1. [ ] text/csv 지원
-4. [ ] 멤버 데이터는 Redis를 이용하여 저장합니다.
+3. [o] 멤버 단건을 조회하는 API
+    3-1. [o] text/csv 지원
+4. [o] 멤버 데이터는 Redis를 이용하여 저장합니다.
 5. [ ] Password는 암호화 해서 저장합니다. 꼭!!! 저장할때부터!!
-6. [ ] Role은 ADMIN, MEMBER, GOOGLE 로 구분합니다 (조회시에는 소문자로 @JsonValue를 사용하지않고)
+6. [o] Role은 ADMIN, MEMBER, GOOGLE 로 구분합니다 (조회시에는 소문자로 @JsonValue를 사용하지않고)
 
 MEMBER
 private String id;

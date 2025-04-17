@@ -7,6 +7,7 @@ import com.nhnacademy.restfinalassign.model.domain.Member;
 import com.nhnacademy.restfinalassign.model.request.MemberRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class MemberService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private static final String HASH_NAME_MEMBER = "Member:";
 
     public void createMember(MemberRequest memberRequest) {
@@ -30,7 +34,8 @@ public class MemberService {
             throw new DuplicateResourceException("해당 ID에 대해 Member가 이미 존재합니다.");
         }
 
-        Member member = new Member(memberRequest.getId(), memberRequest.getName(), memberRequest.getPassword(), memberRequest.getAge(), memberRequest.getRole());
+        String password = passwordEncoder.encode(memberRequest.getPassword());
+        Member member = new Member(memberRequest.getId(), memberRequest.getName(), password, memberRequest.getAge(), memberRequest.getRole());
         redisTemplate.opsForHash().put(HASH_NAME_MEMBER, memberRequest.getId(), member);
     }
 

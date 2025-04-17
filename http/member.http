@@ -8,11 +8,11 @@ Content-Type: application/json
 Accept-Language: en
 
 {
-  "id" : "3",
+  "id" : "6",
   "password" : "1234",
-  "name" : "Kim",
+  "name" : "PasswordEncoder",
   "age" : 26,
-  "role" : "ADMIN"
+  "role" : "admin"
 
 }
 
@@ -27,7 +27,7 @@ GET localhost:8080/member/1
 Content-Type: application/json
 
 ### (GET) text/csv 형식으로 멤버 조회
-GET localhost:8080/member/3
+GET localhost:8080/member/1
 Accept: text/csv
 
 ### (GET) JSON 형식으로 멤버 전체 조회
