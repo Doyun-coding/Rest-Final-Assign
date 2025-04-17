@@ -1,6 +1,8 @@
 package com.nhnacademy.restfinalassign.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nhnacademy.restfinalassign.exception.DuplicateResourceException;
+import com.nhnacademy.restfinalassign.exception.NotFoundMemberException;
 import com.nhnacademy.restfinalassign.model.domain.Member;
 import com.nhnacademy.restfinalassign.model.request.MemberRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MemberService {
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -23,6 +28,15 @@ public class MemberService {
 
         Member member = new Member(memberRequest.getId(), memberRequest.getName(), memberRequest.getPassword(), memberRequest.getAge(), memberRequest.getRole());
         redisTemplate.opsForHash().put(HASH_NAME_MEMBER, memberRequest.getId(), member);
+    }
+
+    public Member getMember(String memberId) {
+        Object o = redisTemplate.opsForHash().get(HASH_NAME_MEMBER, memberId);
+        if(o == null) {
+            throw new NotFoundMemberException("해당 ID 값에 대한 Member가 존재하지 않습니다.");
+        }
+
+        return objectMapper.convertValue(o, Member.class);
     }
 
 }

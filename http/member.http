@@ -2,7 +2,7 @@
 GET https://examples.http-client.intellij.net/get
     ?generated-in=IntelliJ IDEA
 
-###
+### JSON 형식으로 멤버를 생성 (POST)
 POST localhost:8080/member
 Content-Type: application/json
 Accept-Language: en
@@ -15,3 +15,17 @@ Accept-Language: en
   "role" : "MEMBER"
 
 }
+
+### text/csv 형식으로 멤버를 생성
+POST localhost:8080/member
+Content-Type: text/csv
+
+2,1234,Yang,25,MEMBER
+
+### JSON 형식으로 멤버 조회 (GET)
+GET localhost:8080/member/1
+Content-Type: application/json
+
+### text/csv 형식으로 멤버 조회 (GET)
+GET localhost:8080/member/1
+Accept: text/csv
