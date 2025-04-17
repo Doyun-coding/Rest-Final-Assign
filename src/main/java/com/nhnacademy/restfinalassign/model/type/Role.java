@@ -1,10 +1,7 @@
 package com.nhnacademy.restfinalassign.model.type;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nhnacademy.restfinalassign.model.serializer.RoleDeserializer;
 
-@JsonDeserialize(using = RoleDeserializer.class)
 public enum Role {
     ADMIN, MEMBER, GOOGLE;
 

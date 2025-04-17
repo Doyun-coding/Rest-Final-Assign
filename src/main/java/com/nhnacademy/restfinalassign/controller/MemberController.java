@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MemberController {
 
@@ -23,6 +25,11 @@ public class MemberController {
     @GetMapping("/member/{memberId}")
     public Member getMember(@PathVariable String memberId) {
         return memberService.getMember(memberId);
+    }
+
+    @GetMapping("/member")
+    public List<Member> getMembers() {
+        return memberService.getMembers();
     }
 
 

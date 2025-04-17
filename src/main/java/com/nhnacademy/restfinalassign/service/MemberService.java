@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class MemberService {
 
@@ -37,6 +41,18 @@ public class MemberService {
         }
 
         return objectMapper.convertValue(o, Member.class);
+    }
+
+    public List<Member> getMembers() {
+        Map<Object, Object> entries = redisTemplate.opsForHash().entries(HASH_NAME_MEMBER);
+
+        List<Member> members = new ArrayList<>(entries.size());
+        for(Object value : entries.values()) {
+            Member member = objectMapper.convertValue(value, Member.class);
+            members.add(member);
+        }
+
+        return members;
     }
 
 }
